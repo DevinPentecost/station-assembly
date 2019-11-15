@@ -7,14 +7,14 @@ enum MoveState {
 	JUMPING,
 	FALLING
 }
-move_state = MoveState.GROUND
+var move_stat = MoveState.GROUND
 
 class InputState:
-	LEFT = false
-	RIGHT = false
-	UP = false
-	DOWN = false
-input_state = InputState.new()
+	var LEFT = false
+	var RIGHT = false
+	var UP = false
+	var DOWN = false
+var input_state = InputState.new()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -30,4 +30,12 @@ func _ready():
 func _unhandled_key_input(event):
 	
 	#Which directions are pressed?
+	if event.is_action("player_move_down"):
+		input_state.DOWN = event.pressed
+	if event.is_action("player_move_up"):
+		input_state.UP = event.pressed
+	if event.is_action("player_move_left"):
+		input_state.LEFT = event.pressed
+	if event.is_action("player_move_right"):
+		input_state.RIGHT = event.pressed
 	
